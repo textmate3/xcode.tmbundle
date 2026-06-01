@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby18 -s
+#!/usr/bin/env ruby -s
 # encoding: utf-8
 
 require "#{ENV['TM_SUPPORT_PATH']}/lib/osx/plist"

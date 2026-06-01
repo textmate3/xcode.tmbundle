@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby18
+#!/usr/bin/env ruby
 # Copyright 2005 Chris Thomas. All rights reserved.
 # MIT license; share and enjoy.
 require 'pathname'

@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby18
+#!/usr/bin/env ruby
 
 require "#{ENV['TM_SUPPORT_PATH']}/lib/osx/plist"
 
