@@ -30,7 +30,7 @@ class Xcode
 
     def user_settings_data
       user_file     = @project_path + "/#{`whoami`.chomp}.pbxuser"
-      user          = OSX::PropertyList.load(File.new(user_file)) if File.exists?(user_file)
+      user          = OSX::PropertyList.load(File.new(user_file)) if File.exist?(user_file)
     end
         
     def active_configuration_name
