@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby -s
 # encoding: utf-8
 
-require "#{ENV['TM_SUPPORT_PATH']}/lib/osx/plist"
+require "#{ENV['TM_SUPPORT_PATH']}/private/plist"
 require "#{ENV['TM_SUPPORT_PATH']}/lib/escape"
 require "#{ENV['TM_SUPPORT_PATH']}/lib/io"
 require "#{ENV['TM_SUPPORT_PATH']}/lib/ui"
@@ -23,14 +23,14 @@ class Xcode
     
     def initialize(path_to_xcodeproj)
       @project_path = path_to_xcodeproj
-      @project_data = OSX::PropertyList.load(File.new(path_to_xcodeproj + "/project.pbxproj"))
+      @project_data = Plist.load(File.new(path_to_xcodeproj + "/project.pbxproj"))
       @objects      = @project_data['objects']
       @root_object  = @objects[@project_data['rootObject']]
     end
 
     def user_settings_data
       user_file     = @project_path + "/#{`whoami`.chomp}.pbxuser"
-      user          = OSX::PropertyList.load(File.new(user_file)) if File.exist?(user_file)
+      user          = Plist.load(File.new(user_file)) if File.exist?(user_file)
     end
         
     def active_configuration_name

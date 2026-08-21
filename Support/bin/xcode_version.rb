@@ -2,6 +2,8 @@
 # Copyright 2005 Chris Thomas. All rights reserved.
 # MIT license; share and enjoy.
 
+require "#{ENV['TM_SUPPORT_PATH']}/private/plist"
+
 class Xcode
 	
 	def Xcode.supports_configurations?
@@ -19,7 +21,7 @@ class Xcode
 	
 	def Xcode.preferences
 		global_path = "#{ENV['HOME']}/Library/Preferences/com.apple.Xcode.plist"
-		open(global_path) { |io| OSX::PropertyList.load io } rescue { }
+		open(global_path) { |io| Plist.load io } rescue { }
 	end
 	
 end
