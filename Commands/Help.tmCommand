@@ -73,10 +73,6 @@ Normally it should work out-of-the-box when dragging the folder containing your 
     
     It makes the most sense to set this as a project specific variable (as opposed to a global variable). This is done by deselecting everything in the project drawer and then clicking the small circled I button in the lower right corner of the drawer.
 
-*   `TM_MUTE`
-
-    If you do not like the samples being played after a build, you can set this variable to 1. This can be done in Preferences &amp;#x2192; Advanced &amp;#x2192; Shell Variables.
-
 *   `XC_TARGET_NAME`
 
     If there are multiple targets in a project then you can set this environment variable to the name of the target you want to run to avoid the pop-up selector. This would normally be set as a project specific variable (see `TM_XCODE_PROJECT` above for how to do this).

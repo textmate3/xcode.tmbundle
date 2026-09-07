@@ -134,15 +134,11 @@ class Formatter
 		
 		title = html_escape(message.split(" ").collect { |word| word.capitalize }.join(" "))
 		emit_start_section(%Q{<span class="message_title">#{title}</span>}, :css_suffix => 'info', :visibility => :hide)
-		
-		play_sound(ENV['TM_SUCCESS_SOUND'] || 'Hero')
-	end	
+	end
 
 	def failure
 		end_open_sections
 		emit_start_section(%Q{<span class="message_title">Build Failed</span>}, :css_suffix => 'error', :visibility => :hide)
-
-		play_sound(ENV['TM_ERROR_SOUND'] || 'Basso')
 	end
 
 	def complete
@@ -191,24 +187,6 @@ HTML
 	def html_escape(text)
 		CGI.escapeHTML(text)
 	end
-
-	 def play_sound(name)
-	   return if ENV['TM_MUTE']
-
-	   src = [ ENV['TM_SUPPORT_PATH'], "#{ENV['HOME']}/Library", '/Library', '/Network/Library', '/System/Library' ]
-	   src.each do |e|
-	     Dir.chdir(e + '/Sounds') do |dir|
-	       if sound = Dir.glob("#{name}.*").first
-	         sound = "#{dir}/#{sound}"
-	         play  = ENV['TM_SUPPORT_PATH'] + '/bin/play'
-	         %x{ #{e_sh play} #{e_sh sound} &>/dev/null & }
-	         return
-	       end
-	     end rescue nil
-	   end
-
-	   STDERR << "Could not locate sound named ‘#{name}’\n"
-	 end
 
 	def txtmt_link( path, line_number )
 		line_number = 1 if line_number.nil?
